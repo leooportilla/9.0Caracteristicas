@@ -1,45 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Four card feature section</title>
+  <!-- Icono de pestaña -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.png">
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <!-- Titulo de pestaña -->
+  <title>Feature</title>
+
+  <!-- Enlace -->
+  <link rel="stylesheet" href="./style/style.css">
 </head>
+
 <body>
-  
-  Reliable, efficient delivery
-  Powered by Technology
 
-  Our Artificial Intelligence powered tools use millions of project data points 
-  to ensure that your project is successful
+  <!-- Contenedor -->
+  <main class="main">
 
-  Supervisor
-  Monitors activity to identify project roadblocks
+    <!-- Titulares -->
+    <section class="main__holder">
+      <!-- Titulo -->
+      <h1 class="main__holder-titleone">Reliable, efficient delivery</h1>
+      <h1 class="main__holder-titletwo">Powered by Technology</h1>
+      <!-- Parrafo -->
+      <p class="main__holder-paragraph">Our Artificial Intelligence powered tools use millions of project data points
+        to ensure that your project is successful</p>
+    </section>
 
-  Team Builder
-  Scans our talent network to create the optimal team for your project
+    <!-- Caracteristicas -->
+    <section class="main__feature">
 
-  Karma
-  Regularly evaluates our talent to ensure quality
+      <!-- Izquierda -->
+      <article class="main__feature-box one">
+        <h2>Supervisor</h2>
+        <p>Monitors activity to identify project roadblocks</p>
+        <img src="./images/supervisor.svg" alt="Lupa de supervisor">
+      </article>
 
-  Calculator
-  Uses data from past projects to provide better delivery estimates
+      <!-- Central -->
+      <div>
+        <article class="main__feature-box two">
+          <h2>Team Builder</h2>
+          <p>Scans our talent network to create the optimal team for your project</p>
+          <img src="./images/teambuilder.svg" alt="Team Builder">
+        </article>
 
-  
-  <footer>
-    <p class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
-    </p>
+        <article class="main__feature-box tree">
+          <h2>Karma</h2>
+          <p>Regularly evaluates our talent to ensure quality</p>
+          <img src="./images/karma.svg" alt="karma bombillo">
+        </article>
+      </div>
+
+      <!-- Derecha -->
+      <article class="main__feature-box for">
+        <h2>Calculator</h2>
+        <p>Uses data from past projects to provide better delivery estimates</p>
+        <img src="./images/calculator.svg" alt="Calculator Desktop">
+      </article>
+    </section>
+  </main>
+
+  <!--   Autores  -->
+  <footer class="footer">
+    <h2 class="footer__atributos">Challenge by</h2>
+    <a class="footer__atributos-enlace" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>
+    <h2 class="footer__atributos">Coded by</h2>
+    <a class="footer__atributos-enlace" href="https://www.frontendmentor.io/profile/leooportilla"
+      target="_blank">Leonardo Portilla</a>
   </footer>
 </body>
+
 </html>

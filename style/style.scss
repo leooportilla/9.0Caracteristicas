@@ -1,0 +1,270 @@
+@font-face {
+    font-family: Poppins Extra Light;
+    src: url(../fonts/PoppinsExtraLight.ttf);
+}
+
+@font-face {
+    font-family: Poppins Regular;
+    src: url(../fonts/PoppinsRegular.ttf);
+}
+
+@font-face {
+    font-family: Poppins SemiBold;
+    src: url(../fonts/PoppinsSemiBold.ttf);
+}
+ 
+/* VARIABLE */
+// Colores primarios
+$Colores: (
+    "Red": rgb(234, 83, 83),
+    "Cyan": rgb(69, 211, 211),
+    "Orange": rgb(252, 175, 74),
+    "Blue": rgb(84, 158, 242),
+    "VeryDarkBlue": rgb(76, 78, 97),
+    "Grayish": rgb(163, 165, 174),
+    "VeryLightGray": rgb(250, 250, 250),
+
+    // Colores adiccionales
+    "Gris": rgb(155, 154, 159),
+);
+
+// Fonts
+$Fonts: (
+    "Fonts200": Poppins Extra Light,
+    "Fonts400": Poppins Regular,
+    "Fonts600": Poppins SemiBold,
+);
+
+// Resolucion
+$Resolucion: (
+"MovilSmall": 375px,
+    "MovilStandard": 480px,
+    "TabletSmall": 768px,
+    "TabletStandard": 960px,
+    "Laptop": 1024px,
+    "Desktop": 1328px,
+);
+
+/* Font Size */
+$FontSize: 15px;
+
+
+/* FUNCIONES */
+// Fonts
+@mixin Fonts ($color, $Fonts, $size) {
+    color: $color;
+    font-family: $Fonts;
+    font-size: $size;
+}
+// Flex
+@mixin Flex ($justify, $align, $direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+// Reponsive Desing
+@mixin Tablet ($resolucion : 960px) {
+    @media screen and (max-width: $resolucion) {
+        @content;
+    }
+}
+
+@mixin Movil ($resolucion : 480px) {
+    @media screen and (max-width: $resolucion) {
+        @content;
+    }
+}
+
+/* Normalize */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Principal */
+body {
+    font-size: 15px;
+    width: 100vw;
+    height: 100vh;
+
+    // Cuerpo principal
+    & .main {
+        width: 100%;
+        height: 90%;
+        @include Flex (center, center, column);
+
+        // Titular
+        &__holder {
+            text-align: center;
+            line-height: 1.2;
+
+            // Primer titulo
+            &-titleone {
+                @include Fonts(map-get($Colores, "Grayish"), map-get($Fonts, "Fonts200"), 2.5em);
+                font-weight: 200;
+            }
+
+            // Segundo titulo
+            &-titletwo {
+                @include Fonts(map-get($Colores, "VeryDarkBlue"), map-get($Fonts, "Fonts600"), 2.5em);
+            }
+
+            // Parrafo
+            &-paragraph {
+                margin-top: 1em;
+                margin-bottom: 4em;
+                width: 34.3em;
+                line-height: 1.8;
+                @include Fonts(map-get($Colores, "Gris"), map-get($Fonts, "Fonts400"), 1.1em);
+            }
+        }
+
+        // Caracteristicas
+        &__feature {
+            @include Flex(normal, center, row);
+            gap: 2em;
+
+            // Contenedor para doble tarjeta 
+            & div {
+                @include Flex(space-between, normal, column);
+                gap: 2em;
+            }
+
+            // Tarjeta
+            &-box {
+                width: 359px;
+                height: 250px;
+                padding: 2em;
+                border-radius: 0.5em;
+                position: relative;
+                box-shadow: 0 10px 50px -25px map-get($Colores, "VeryDarkBlue");
+
+                // Titulo
+                & h2 {
+                    @include Fonts(map-get($Colores, "VeryDarkBlue"), map-get($Fonts, "Fonts600"), 1.2em);
+                    margin-bottom: 1em;
+                }
+
+                // Descripcion
+                & p {
+                    @include Fonts(map-get($Colores, "Gris"), map-get($Fonts, "Fonts400"), 0.9em);
+                }
+
+                // Icono
+                & img {
+                    width: 4em;
+                    position: absolute;
+                    right: 2em;
+                    bottom: 2em;
+                }
+
+                // Colores del border superior para cada tarjeta
+                &.one {
+                    border-top: 0.3em solid map-get($Colores, "Cyan");
+                }
+
+                &.two {
+                    border-top: 0.3em solid map-get($Colores, "Red")
+                }
+
+                &.tree {
+                    border-top: 0.3em solid map-get($Colores, "Orange")
+                }
+
+                &.for {
+                    border-top: 0.3em solid map-get($Colores, "Blue")
+                }
+            }
+        }
+    }
+
+    /* Autores */
+    & .footer {
+        @include Flex(center, center, row);
+        @include Fonts(map-get($Colores, "VeryDarkBlue"), map-get($Fonts, "Fonts600"), 1em);
+        margin-top: 2em;
+
+        &__atributos {
+            font-size: 1em;
+
+            &-enlace {
+                margin-left: 0.3em;
+                margin-right: 0.3em;
+            }
+        }
+    }
+}
+
+/* Reponsive desing para tablet */
+@include Tablet (map-get($Resolucion, "TabletStandard")) {
+    body {
+        width: auto;
+        height: auto;
+    
+        & .main {
+            margin-top: 5em;
+
+            &__feature {
+                
+                flex-direction: column;
+            }
+        }
+    }
+} 
+
+/* Reponsive desing para movil */
+@include Movil (map-get($Resolucion, "MovilSmall")) {
+    body {
+    
+        & .main {
+
+            &__holder {
+    
+                &-titleone {
+                    font-size: 1.8em;
+                }
+    
+                &-titletwo {
+                    font-size: 1.8em;
+                }
+    
+                &-paragraph {
+                    width: 100%;
+                    padding: 0 1em;
+                }
+            }
+    
+            &__feature {
+    
+                &-box {
+                    width: 315px;
+                    height: 220px;
+                    
+                    & h2 {
+                        font-size: 1.4em;
+                    }
+
+                    & p {
+                        font-size: 0.8em;
+                    }
+                    & img {
+                        width: 3em;
+                    }
+                }
+            }
+        }
+    
+        & .footer {
+    
+            &__atributos {
+                font-size: 0.6em;
+    
+                &-enlace {
+                    font-size: 0.6em;
+                }
+            }
+        }
+    }
+}
